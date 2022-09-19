@@ -1,0 +1,33 @@
+name: Youth Learning Weekly report
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 2,8 ? * 2,3"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: CheckOut
+        uses: actions/checkout@v2.4.0
+
+      - name: Setup Python
+        uses: actions/setup-python@v2.3.2
+        with:
+          python-version: "3.8"
+          architecture: "x64"
+
+      - name: Install packages
+        run: pip install -r requirements.txt
+
+      - name: Run Application
+        env:
+          token: ${{ secrets.token }}
+          name: ${{ secrets.name }}
+          tel: ${{ secrets.tel }}
+          org: ${{ secrets.org }}
+          lastOrg: ${{ secrets.lastOrg }}
+          orgName: ${{ secrets.orgName }}
+          allOrgName: ${{ secrets.allOrgName }}
+        run: python -u src/main.py
