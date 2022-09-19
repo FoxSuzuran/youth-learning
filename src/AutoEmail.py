@@ -8,7 +8,7 @@ mail_host = os.environ.get("mail_server")  # 设置服务器
 mail_sender = os.environ.get("mail_sender")  # 用户名
 mail_pass = os.environ.get("mail_pass")  # 口令
 
-receivers = ["2903582631@qq.com"]  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
+receivers = [os.environ.get("mail_sender")]  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
 
 message = MIMEText("青年大学习自动学习出现问题", "plain", "utf-8")
 
