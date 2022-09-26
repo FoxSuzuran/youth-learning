@@ -21,11 +21,15 @@ request_json = {
 }
 
 if __name__ == "__main__":
+    global message
     r = requests.post(
         url=request_url, headers=request_header, data=json.dumps(request_json)
     )
     r.encoding = "utf-8"
-    message = json.loads(r.text)["msg"]
+    try:
+        message = json.loads(r.text)["msg"]  # 成功打卡的话好像没有msg回传
+    except:
+        pass
     if r.status_code == 200 and not message == "微信用户未登录":
         print(message)
     else:
