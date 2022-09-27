@@ -30,6 +30,7 @@ if __name__ == "__main__":
         message = json.loads(r.text)["msg"]  # 成功打卡的话好像没有msg回传
     except:
         pass
+    print(message)
     if r.status_code == 200 and not message == "微信用户未登录":
         print(message)
     else:
