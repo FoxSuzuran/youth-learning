@@ -4,7 +4,7 @@ from email.mime.text import MIMEText
 from email.header import Header
 
 # 第三方 SMTP 服务
-mail_host = os.environ.get("smtp.qq.com")  # 设置服务器
+mail_host = "smtp.qq.com"  # 设置服务器
 mail_sender = os.environ.get("mail_sender")  # 用户名
 mail_pass = os.environ.get("mail_pass")  # 口令
 
